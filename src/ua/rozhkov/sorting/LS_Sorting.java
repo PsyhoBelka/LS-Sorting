@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class LS_Sorting {
 
-    static int[] arrayForSort = new int[10];
+    static int[] arrayForSort = new int[1000];
 
     public static void main(String[] args) {
 
@@ -24,7 +24,8 @@ public class LS_Sorting {
         System.out.println("-----------------------------");
 
         System.out.println("---Selection sort---");
-        multisort.selectionSort(arrayForSort);
+        init_array();
+        System.out.println(Arrays.toString(multisort.selectionSort(arrayForSort)));
         System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
         System.out.println("--------------------");
 

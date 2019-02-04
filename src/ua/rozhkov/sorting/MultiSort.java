@@ -69,9 +69,30 @@ public class MultiSort {
     public int[] selectionSort(int[] arrayToSort) {
         localTimeStart = LocalTime.now();
         //todo: sorting phase
+
+        int min;
+        int minIndex;
+        int i = 0;
+        int tmp;
+
+        while (i < arrayToSort.length) {
+            min = arrayToSort[i];
+            minIndex = i;
+            for (int k = i; k < arrayToSort.length; k++) {
+                if (arrayToSort[k] < min) {
+                    min = arrayToSort[k];
+                    minIndex = k;
+                }
+            }
+            tmp = arrayToSort[i];
+            arrayToSort[i] = arrayToSort[minIndex];
+            arrayToSort[minIndex] = tmp;
+            i++;
+        }
+
         localTimeEnd = LocalTime.now();
         sortDuration = Duration.between(localTimeStart, localTimeEnd).toMillis();
-        return null;
+        return arrayToSort;
     }
 
     public int[] insertionSort(int[] arrayToSort) {
