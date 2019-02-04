@@ -11,6 +11,14 @@ public class LS_Sorting {
 
         MultiSort multisort = new MultiSort();
 
+        System.out.println("Select sorting algorithm: ");
+        System.out.println("1. Bubble sort");
+        System.out.println("2. Improved bubble sort");
+        System.out.println("3. Selection sort");
+        System.out.println("4. Insertion sort");
+        System.out.println("5.Merge sort");
+        System.out.println("6. Quick sort");
+
         System.out.println("---Bubble sort---");
         init_array();
         System.out.println(Arrays.toString(multisort.bubbleSort(arrayForSort)));
