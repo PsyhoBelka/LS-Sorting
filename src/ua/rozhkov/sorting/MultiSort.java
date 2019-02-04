@@ -68,7 +68,6 @@ public class MultiSort {
 
     public int[] selectionSort(int[] arrayToSort) {
         localTimeStart = LocalTime.now();
-        //todo: sorting phase
 
         int min;
         int minIndex;
