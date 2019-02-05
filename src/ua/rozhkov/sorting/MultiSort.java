@@ -112,8 +112,50 @@ public class MultiSort {
 
     public int[] quickSort(int[] arrayToSort) {
         localTimeStart = LocalTime.now();
-        //todo: sorting phase
+
+        quickSort2(arrayToSort, 0, arrayToSort.length - 1);
+
         localTimeEnd = LocalTime.now();
-        return null;
+        return arrayToSort;
+    }
+
+    private int[] quickSort2(int[] arr, int leftP, int rightP) {
+        int p = partition(arr, leftP, rightP);
+        if (leftP < p - 1)
+            quickSort2(arr, leftP, p - 1);
+        if (p < rightP - 1)
+            quickSort2(arr, p, rightP);
+        return arr;
+    }
+
+    private int partition(int[] arr, int leftP, int rightP) {
+        int pivot = arr[(leftP + rightP) / 2];
+
+        while (leftP <= rightP) {
+            while (arr[leftP] < pivot) {
+                leftP++;
+            }
+
+            while (arr[rightP] > pivot) {
+                rightP--;
+            }
+
+            if (leftP <= rightP) {
+                if (leftP != rightP) {
+                    swap(arr, leftP, rightP);
+                }
+                leftP++;
+                rightP--;
+            }
+
+        }
+        return leftP;
+    }
+
+    private void swap(int[] arr, int a, int b) {
+        int tmp;
+        tmp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = tmp;
     }
 }

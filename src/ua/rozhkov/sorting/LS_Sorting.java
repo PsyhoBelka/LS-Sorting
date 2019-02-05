@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class LS_Sorting {
 
-    static int[] arrayForSort = new int[10];
+    static int[] arrayForSort = new int[1000];
 
     public static void main(String[] args) {
 
@@ -19,46 +19,49 @@ public class LS_Sorting {
             Scanner scanner = new Scanner(System.in);
             input = scanner.nextInt();
             switch (input) {
+                case 7:
                 case 1:
                     System.out.println("---Bubble sort---");
                     init_array();
                     System.out.println(Arrays.toString(multisort.bubbleSort(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("-----------------");
-                    break;
+                    if (input == 1) break;
                 case 2:
                     System.out.println("---Improvement bubble sort---");
                     init_array();
                     System.out.println(Arrays.toString(multisort.bubbleSortImpr(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("-----------------------------");
-                    break;
+                    if (input == 2) break;
                 case 3:
                     System.out.println("---Selection sort---");
                     init_array();
                     System.out.println(Arrays.toString(multisort.selectionSort(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("--------------------");
-                    break;
+                    if (input == 3) break;
                 case 4:
                     System.out.println("---Insertion sort---");
-                    multisort.insertionSort(arrayForSort);
+                    init_array();
+                    System.out.println(Arrays.toString(multisort.insertionSort(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("--------------------");
-                    break;
+                    if (input == 4) break;
                 case 5:
                     System.out.println("---Merge sort---");
-                    multisort.mergeSort(arrayForSort);
+                    init_array();
+                    System.out.println(Arrays.toString(multisort.mergeSort(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("----------------");
-
-                    break;
+                    if (input == 5) break;
                 case 6:
                     System.out.println("---Quick sort---");
-                    multisort.quickSort(arrayForSort);
+                    init_array();
+                    System.out.println(Arrays.toString(multisort.quickSort(arrayForSort)));
                     System.out.println("Time for sorting: " + multisort.sortDuration + "ms");
                     System.out.println("----------------");
-                    break;
+                    if (input == 6) break;
             }
         }
     }
@@ -81,6 +84,7 @@ public class LS_Sorting {
         System.out.println("4. Insertion sort");
         System.out.println("5. Merge sort");
         System.out.println("6. Quick sort");
+        System.out.println("7. Run all");
         System.out.println("--------------------------");
         System.out.println("0. Exit");
     }
