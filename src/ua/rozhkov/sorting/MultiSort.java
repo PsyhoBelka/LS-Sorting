@@ -42,8 +42,8 @@ public class MultiSort {
         int i = 0, j = 0;
 
         if (arrayToSort == null) throw new IllegalArgumentException();
-        if (arrayToSort.length == 0) throw new IllegalArgumentException();
-        if (arrayToSort.length == 1) return arrayToSort;
+        if (arrayToSort.length <= 1) return arrayToSort;
+
         j = arrayToSort.length - 1;
 
         localTimeStart = LocalTime.now();
@@ -67,13 +67,16 @@ public class MultiSort {
     }
 
     public int[] selectionSort(int[] arrayToSort) {
-        localTimeStart = LocalTime.now();
+
+        if (arrayToSort == null) throw new IllegalArgumentException();
+        if (arrayToSort.length <= 1) return arrayToSort;
 
         int min;
         int minIndex;
         int i = 0;
         int tmp;
 
+        localTimeStart = LocalTime.now();
         while (i < arrayToSort.length) {
             min = arrayToSort[i];
             minIndex = i;
@@ -103,14 +106,55 @@ public class MultiSort {
     }
 
     public int[] mergeSort(int[] arrayToSort) {
+        if (arrayToSort == null) throw new IllegalArgumentException();
+        if (arrayToSort.length <= 1) return arrayToSort;
+
         localTimeStart = LocalTime.now();
-        //todo: sorting phase
+        mergeSort2(arrayToSort, 0, arrayToSort.length - 1);
         localTimeEnd = LocalTime.now();
         sortDuration = Duration.between(localTimeStart, localTimeEnd).toMillis();
-        return null;
+        return arrayToSort;
+    }
+
+    private int[] mergeSort2(int[] arr, int left, int right) {
+        int split = 0;
+
+        if (left < right) {
+            split = (left + right) / 2;
+            mergeSort2(arr, left, split);
+            mergeSort2(arr, split + 1, right);
+            merge(arr, left, split, right);
+        }
+        return arr;
+    }
+
+    private void merge(int[] arr, int left, int split, int right) {
+
+        int[] tmp = new int[right - left + 1];
+        int pos1 = left;
+        int pos2 = split + 1;
+        int posTmp = 0;
+
+        while (pos1 <= split && pos2 <= right) {
+            if (arr[pos1] < arr[pos2])
+                tmp[posTmp++] = arr[pos1++];
+            else
+                tmp[posTmp++] = arr[pos2++];
+        }
+
+        while (pos2 <= right)
+            tmp[posTmp++] = arr[pos2++];
+        while (pos1 <= split)
+            tmp[posTmp++] = arr[pos1++];
+
+        for (posTmp = 0; posTmp < right - left + 1; posTmp++)
+            arr[left + posTmp] = tmp[posTmp];
     }
 
     public int[] quickSort(int[] arrayToSort) {
+        if (arrayToSort == null) throw new IllegalArgumentException();
+        if (arrayToSort.length <= 1) return arrayToSort;
+
         localTimeStart = LocalTime.now();
 
         quickSort2(arrayToSort, 0, arrayToSort.length - 1);
