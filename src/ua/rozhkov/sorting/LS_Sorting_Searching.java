@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class LS_Sorting {
+public class LS_Sorting_Searching {
 
     private static int[] arrayForSort = new int[10];
 
@@ -20,6 +20,21 @@ public class LS_Sorting {
             input = scanner.nextInt();
             System.out.println();
             switch (input) {
+                case 8:
+                    System.out.println("Binary search");
+                    init_array();
+                    System.out.println(Arrays.toString(multisort.bubbleSortImpr(arrayForSort)));
+                    Scanner scannerSearch = new Scanner(System.in);
+                    System.out.print("Enter number to search: ");
+                    int numberToSearch = scanner.nextInt();
+                    System.out.println("...SEARCHING...");
+                    BinarySearch binarySearch = new BinarySearch();
+                    int res = binarySearch.search(arrayForSort, numberToSearch);
+                    if (res >= 0)
+                        System.out.println("Number found at position " + res);
+                    else
+                        System.out.println("Number not found");
+                    break;
                 case 7:
                 case 1:
                     System.out.println("---Bubble sort---");
@@ -86,6 +101,7 @@ public class LS_Sorting {
         System.out.println("5. Merge sort");
         System.out.println("6. Quick sort");
         System.out.println("7. Run all");
+        System.out.println("8. Binary search");
         System.out.println("--------------------------");
         System.out.println("0. Exit");
     }
