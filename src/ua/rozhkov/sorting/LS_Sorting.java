@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class LS_Sorting {
 
-    static int[] arrayForSort = new int[1000];
+    private static int[] arrayForSort = new int[10];
 
     public static void main(String[] args) {
 
@@ -18,6 +18,7 @@ public class LS_Sorting {
             System.out.print("You choice: ");
             Scanner scanner = new Scanner(System.in);
             input = scanner.nextInt();
+            System.out.println();
             switch (input) {
                 case 7:
                 case 1:
@@ -66,7 +67,7 @@ public class LS_Sorting {
         }
     }
 
-    public static void init_array() {
+    private static void init_array() {
         for (int i = 0; i < arrayForSort.length; i++) {
             arrayForSort[i] = new Random().nextInt(100);
         }
